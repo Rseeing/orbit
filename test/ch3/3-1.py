@@ -29,23 +29,24 @@ def newton_solver():
         print("\n" + "="*60)
         print(f"开始迭代第 {idx} 个初值: x0 = {x0}")
         x = x0
-        for k in range(1, 50):  # 最大迭代次数暂时设50次
+        for k in range(1, 100):
             fx = f(x)
             dfx = df(x)
             
-            if abs(dfx) < 1e-12:  # 网上说的经验值
-                print("导数接近 0，迭代终止")
+            if abs(fx) < 1e-64 :  # #####################
+                print("f(x) <1e-64，迭代终止")
+                print(f"近似根 = {x_new:.{digits}f}")
                 break
             
             x_new = x - fx / dfx
-            print(f"迭代 {k:2d}: x = {x:.15f}") 
-
-            if abs(x_new - x) < tol:
+            print(f"迭代 {k:2d}: x = {x_new:.20f}, f(x) = {fx:.32f}, df(x) = {dfx:.15f}") 
+            
+            if abs(x_new - x) < tol or abs(fx/dfx) < tol:
                 print("-"*60)
                 print(f"收敛于第 {k} 次迭代")
                 print(f"近似根 = {x_new:.{digits}f}")
                 break
-
+            
             x = x_new
         else:
             print("未在最大迭代次数内收敛")
