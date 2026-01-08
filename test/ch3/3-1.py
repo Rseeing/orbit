@@ -29,11 +29,11 @@ def newton_solver():
         print("\n" + "="*60)
         print(f"开始迭代第 {idx} 个初值: x0 = {x0}")
         x = x0
-        for k in range(1, 50):
+        for k in range(1, 50):  # 最大迭代次数暂时设50次
             fx = f(x)
             dfx = df(x)
             
-            if abs(dfx) < 1e-12:  # AI 说的经验值，我不是很清楚
+            if abs(dfx) < 1e-12:  # 网上说的经验值
                 print("导数接近 0，迭代终止")
                 break
             
