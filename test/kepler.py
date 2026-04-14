@@ -65,7 +65,7 @@ def stumpff_C(z):
     else:
         return 0.5
 
-def kepler_chi(delta_t, r0, vr0, a, mu=1.0, tolerance=1e-12):
+def kepler_chi(delta_t, r0, vr0, a, mu=1.0, tolerance=1e-8):
     
     #参数准备 + 初值
     sqrt_mu = np.sqrt(mu)
@@ -75,6 +75,7 @@ def kepler_chi(delta_t, r0, vr0, a, mu=1.0, tolerance=1e-12):
         alpha = 0.0   #  抛物线轨道（a = ∞）：α = 0
     chi = sqrt_mu * delta_t * abs(alpha)
 
+    # 牛顿迭代
     while True:
         z = alpha * chi * chi
         C = stumpff_C(z)
