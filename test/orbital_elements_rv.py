@@ -1,6 +1,6 @@
 import numpy as np
 
-# 地球引力常数 (m^3/s^2)
+# 地球引力常数
 MU_EARTH = 3.986004418e5  # km³/s²
 
 def orbital_elements(r, v, mu=MU_EARTH):
